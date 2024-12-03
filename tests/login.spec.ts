@@ -29,7 +29,7 @@ test('Login with incorrect details', async({page}) =>{
     const loginPage = new LoginPage(page)
     await page.goto("https://hoff.is/login")
 
-    await loginPage.login("Zizi", password,"consumer")
+    await loginPage.login("Zizi", "test","consumer")
     const errorMessage = await loginPage.errorMessage.textContent()
     expect(errorMessage).toBe("Incorrect password")
 })
