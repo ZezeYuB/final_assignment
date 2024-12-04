@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import AxePuppeteer from '@axe-core/playwright'; // Correct import
 
-test.only('should have no accessibility violations', async ({ page }) => {
+test('should have no accessibility violations', async ({ page }) => {
     // Navigate to the page you want to test
     await page.goto('https://hoff.is/login'); // Replace with your URL
   
