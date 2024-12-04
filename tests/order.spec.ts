@@ -16,7 +16,7 @@ test.skip('Login with Markus', async({page}) =>{
     expect(header).toBe("Store")
 })
 
-test.skip('Login with incorrect details', async({page}) =>{
+test('Login with incorrect details', async({page}) =>{
     const loginPage = new LoginPage(page)
     await page.goto("https://hoff.is/login")
 
@@ -25,7 +25,7 @@ test.skip('Login with incorrect details', async({page}) =>{
     expect(errorMessage).toBe("Incorrect password")
 })
 
-test('Place a purchase', async({page}) => {
+test('Placing a purchase', async({page}) => {
     const purchasePage = new PurchasePage(page);
     await page.goto("https://hoff.is/store2/?username=markus&role=business")
 
