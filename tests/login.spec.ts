@@ -38,26 +38,14 @@ import {expect} from '@playwright/test'
 import { LoginPage } from '../pages/loginpage';
 import { StorePage } from '../pages/storepage';
 
-let password: string;
 
-test('Login with Markus', async ({ loginPage, storePage, page }) => {
-  // If password is set in the environment, use it
-  if (process.env.PASSWORD !== undefined) {
-    password = process.env.PASSWORD;
-  }
-
-  // Navigate to the login page and perform login
-  await page.goto('https://hoff.is/login');
-  await loginPage.login('Markus', password, 'consumer');
-  console.log(password)
-  
-  // Get the username and header text
+test('Login with Markus', async ({ loggedInPage, storePage }) => {
+  // Access the preconfigured logged-in page and storePage fixture
   const username = await storePage.usernameText.textContent();
   const header = await storePage.header.textContent();
 
-  // Assert that the header is "Store"
-  expect(header).toBe('Store');
-  console.log(username);
+  expect(header).toBe('Store');  // Assert that the user is on the correct page
+  console.log(`Logged in as: ${username}`);
 });
 
 
