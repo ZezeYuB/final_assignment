@@ -7,6 +7,7 @@ export class LoginPage {
     readonly roleSelector: Locator;
     readonly submitButton: Locator;
     readonly errorMessage: Locator;
+    readonly header: Locator;
 
     constructor (page: Page) {
         this.page = page;
@@ -15,9 +16,7 @@ export class LoginPage {
         this.roleSelector = page.getByLabel("Select Role");
         this.submitButton = page.getByRole('button', {name: "Login"});
         this.errorMessage = page.getByTestId("error-message");
-
-        
-    
+        this.header = page.locator('h1');  
     }
 
 async login(username: string, password: string, userType: string){

@@ -1,24 +1,12 @@
-import test, { expect } from "@playwright/test"
+import { test } from '../tests/fixture';  // Import the fixtures
+import {expect} from '@playwright/test'
+import * as dotenv from 'dotenv'
 import {LoginPage} from "../pages/loginpage"
 import {StorePage} from "../pages/storepage"
-import exp from "constants"
 import { PurchasePage } from "../pages/purchasepage"
 
 
-test.skip('Login with Markus', async({page}) =>{
-    const loginPage = new LoginPage(page)
-    const storePage = new StorePage(page)
-    await page.goto("https://hoff.is/login")
-
-    await loginPage.login("Markus", "sup3rs3cr3t","consumer")
-    const username = await storePage.usernameText.textContent()
-    const header = await storePage.header.textContent()
-    expect(header).toBe("Store")
-})
-
-test('Login with incorrect details', async({page}) =>{
-    const loginPage = new LoginPage(page)
-    await page.goto("https://hoff.is/login")
+test('Login with incorrect details', async({loginPage}) =>{
 
     await loginPage.login("Markus", "sup3rs3cr2t","consumer")
     const errorMessage = await loginPage.errorMessage.textContent()
