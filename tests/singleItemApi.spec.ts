@@ -1,7 +1,6 @@
 import { test, expect } from '@playwright/test';
 
   test('Validate JSON response from /price/1', async ({ request }) => {
-    // Make the GET request to the endpoint
     const response = await request.get('https://hoff.is/store2/api/v1/price/1');
 
     // Assert the response status

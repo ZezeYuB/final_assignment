@@ -10,6 +10,7 @@ export class StorePage {
         this.page = page;
         this.usernameText = page.getByTestId("username");    
         this.header = page.locator("h1");
+
     }
 
 
