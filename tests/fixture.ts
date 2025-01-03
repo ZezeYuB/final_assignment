@@ -15,11 +15,9 @@ export const test = base.extend<{ loginPage: LoginPage, storePage: StorePage, lo
     await use(storePage);
   },
 
-  loggedInPage: async ({ page, loginPage }, use) => {
-    let password = process.env.PASSWORD || 'defaultPassword'; // Provide a fallback if PASSWORD is undefined
-  
-    await page.goto('https://hoff.is/login');
+  loggedInPage: async ({ loginPage }, use) => {
+    let password = process.env.PASSWORD || 'defaultPassword'; 
     await loginPage.login('Markus', password, 'consumer'); 
-    await use(page); 
+    await use(loginPage.page); 
   }
 });

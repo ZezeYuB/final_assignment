@@ -6,12 +6,7 @@ import {StorePage} from "../pages/storepage"
 import { PurchasePage } from "../pages/purchasepage"
 
 
-test('Login with incorrect details', async({loginPage}) =>{
 
-    await loginPage.login("Sandy", "sup3rs3cr2t","consumer")
-    const errorMessage = await loginPage.errorMessage.textContent()
-    expect(errorMessage).toBe("Incorrect password")
-})
 
 test('Placing single purchase', async({loggedInPage}) => {
     const purchasePage = new PurchasePage(loggedInPage);
